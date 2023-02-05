@@ -25,6 +25,7 @@ import 'package:regnify_core/src/model/many_roles_out.dart';
 import 'package:regnify_core/src/model/many_system_scope_out.dart';
 import 'package:regnify_core/src/model/many_user_roles_out.dart';
 import 'package:regnify_core/src/model/many_users_in_db.dart';
+import 'package:regnify_core/src/model/mini_file_object_out.dart';
 import 'package:regnify_core/src/model/mini_role_out.dart';
 import 'package:regnify_core/src/model/mini_user_role_out.dart';
 import 'package:regnify_core/src/model/order_by.dart';
@@ -53,6 +54,7 @@ part 'serializers.g.dart';
   ManySystemScopeOut,
   ManyUserRolesOut,
   ManyUsersInDB,
+  MiniFileObjectOut,
   MiniRoleOut,
   MiniUserRoleOut,
   OrderBy,

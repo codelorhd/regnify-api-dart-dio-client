@@ -13,6 +13,8 @@ class _$ProfileOut extends ProfileOut {
   final String firstName;
   @override
   final String avatarUrl;
+  @override
+  final MiniFileObjectOut? photoFile;
 
   factory _$ProfileOut([void Function(ProfileOutBuilder)? updates]) =>
       (new ProfileOutBuilder()..update(updates))._build();
@@ -20,7 +22,8 @@ class _$ProfileOut extends ProfileOut {
   _$ProfileOut._(
       {required this.lastName,
       required this.firstName,
-      required this.avatarUrl})
+      required this.avatarUrl,
+      this.photoFile})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(lastName, r'ProfileOut', 'lastName');
     BuiltValueNullFieldError.checkNotNull(
@@ -42,7 +45,8 @@ class _$ProfileOut extends ProfileOut {
     return other is ProfileOut &&
         lastName == other.lastName &&
         firstName == other.firstName &&
-        avatarUrl == other.avatarUrl;
+        avatarUrl == other.avatarUrl &&
+        photoFile == other.photoFile;
   }
 
   @override
@@ -51,6 +55,7 @@ class _$ProfileOut extends ProfileOut {
     _$hash = $jc(_$hash, lastName.hashCode);
     _$hash = $jc(_$hash, firstName.hashCode);
     _$hash = $jc(_$hash, avatarUrl.hashCode);
+    _$hash = $jc(_$hash, photoFile.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -60,7 +65,8 @@ class _$ProfileOut extends ProfileOut {
     return (newBuiltValueToStringHelper(r'ProfileOut')
           ..add('lastName', lastName)
           ..add('firstName', firstName)
-          ..add('avatarUrl', avatarUrl))
+          ..add('avatarUrl', avatarUrl)
+          ..add('photoFile', photoFile))
         .toString();
   }
 }
@@ -80,6 +86,12 @@ class ProfileOutBuilder implements Builder<ProfileOut, ProfileOutBuilder> {
   String? get avatarUrl => _$this._avatarUrl;
   set avatarUrl(String? avatarUrl) => _$this._avatarUrl = avatarUrl;
 
+  MiniFileObjectOutBuilder? _photoFile;
+  MiniFileObjectOutBuilder get photoFile =>
+      _$this._photoFile ??= new MiniFileObjectOutBuilder();
+  set photoFile(MiniFileObjectOutBuilder? photoFile) =>
+      _$this._photoFile = photoFile;
+
   ProfileOutBuilder() {
     ProfileOut._defaults(this);
   }
@@ -90,6 +102,7 @@ class ProfileOutBuilder implements Builder<ProfileOut, ProfileOutBuilder> {
       _lastName = $v.lastName;
       _firstName = $v.firstName;
       _avatarUrl = $v.avatarUrl;
+      _photoFile = $v.photoFile?.toBuilder();
       _$v = null;
     }
     return this;
@@ -110,14 +123,28 @@ class ProfileOutBuilder implements Builder<ProfileOut, ProfileOutBuilder> {
   ProfileOut build() => _build();
 
   _$ProfileOut _build() {
-    final _$result = _$v ??
-        new _$ProfileOut._(
-            lastName: BuiltValueNullFieldError.checkNotNull(
-                lastName, r'ProfileOut', 'lastName'),
-            firstName: BuiltValueNullFieldError.checkNotNull(
-                firstName, r'ProfileOut', 'firstName'),
-            avatarUrl: BuiltValueNullFieldError.checkNotNull(
-                avatarUrl, r'ProfileOut', 'avatarUrl'));
+    _$ProfileOut _$result;
+    try {
+      _$result = _$v ??
+          new _$ProfileOut._(
+              lastName: BuiltValueNullFieldError.checkNotNull(
+                  lastName, r'ProfileOut', 'lastName'),
+              firstName: BuiltValueNullFieldError.checkNotNull(
+                  firstName, r'ProfileOut', 'firstName'),
+              avatarUrl: BuiltValueNullFieldError.checkNotNull(
+                  avatarUrl, r'ProfileOut', 'avatarUrl'),
+              photoFile: _photoFile?.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'photoFile';
+        _photoFile?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            r'ProfileOut', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

@@ -3,6 +3,7 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:regnify_core/src/model/mini_file_object_out.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -14,6 +15,7 @@ part 'profile_out.g.dart';
 /// * [lastName] 
 /// * [firstName] 
 /// * [avatarUrl] 
+/// * [photoFile] 
 @BuiltValue()
 abstract class ProfileOut implements Built<ProfileOut, ProfileOutBuilder> {
   @BuiltValueField(wireName: r'last_name')
@@ -24,6 +26,9 @@ abstract class ProfileOut implements Built<ProfileOut, ProfileOutBuilder> {
 
   @BuiltValueField(wireName: r'avatar_url')
   String get avatarUrl;
+
+  @BuiltValueField(wireName: r'photo_file')
+  MiniFileObjectOut? get photoFile;
 
   ProfileOut._();
 
@@ -63,6 +68,13 @@ class _$ProfileOutSerializer implements PrimitiveSerializer<ProfileOut> {
       object.avatarUrl,
       specifiedType: const FullType(String),
     );
+    if (object.photoFile != null) {
+      yield r'photo_file';
+      yield serializers.serialize(
+        object.photoFile,
+        specifiedType: const FullType(MiniFileObjectOut),
+      );
+    }
   }
 
   @override
@@ -106,6 +118,13 @@ class _$ProfileOutSerializer implements PrimitiveSerializer<ProfileOut> {
             specifiedType: const FullType(String),
           ) as String;
           result.avatarUrl = valueDes;
+          break;
+        case r'photo_file':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(MiniFileObjectOut),
+          ) as MiniFileObjectOut;
+          result.photoFile.replace(valueDes);
           break;
         default:
           unhandled.add(key);
